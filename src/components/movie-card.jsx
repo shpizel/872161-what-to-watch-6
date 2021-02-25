@@ -1,8 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {Header} from "./header";
 
-export const MovieCard = (props) => {
+import Header from "./header";
+import {activeFilmShape} from "../validators/active-film";
+
+
+const MovieCard = (props) => {
   const {activeFilm} = props;
   return <section className="movie-card">
     <div className="movie-card__bg">
@@ -44,11 +46,7 @@ export const MovieCard = (props) => {
 };
 
 MovieCard.propTypes = {
-  activeFilm: PropTypes.shape({
-    background: PropTypes.string,
-    name: PropTypes.string,
-    poster: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number
-  }).isRequired
+  activeFilm: activeFilmShape.isRequired
 };
+
+export default MovieCard;

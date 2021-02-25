@@ -1,6 +1,7 @@
 import React from "react";
 
-export const Footer = () => {
+
+const Footer = () => {
   return <footer className="page-footer">
     <div className="logo">
       <a className="logo__link logo__link--light">
@@ -10,7 +11,9 @@ export const Footer = () => {
       </a>
     </div>
     <div className="copyright">
-      <p>© 2019 What to watch Ltd.</p>
+      <p>© 2021 What to watch Ltd.</p>
     </div>
   </footer>;
 };
+
+export default Footer;

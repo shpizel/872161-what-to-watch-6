@@ -1,5 +1,7 @@
 import React from "react";
-import PropTypes from 'prop-types';
+
+import {filmShape} from "../validators/film";
+
 
 export const SmallMovieCard = (props) => {
   const {film} = props;
@@ -14,8 +16,7 @@ export const SmallMovieCard = (props) => {
 };
 
 SmallMovieCard.propTypes = {
-  film: PropTypes.shape({
-    name: PropTypes.string,
-    image: PropTypes.string
-  }).isRequired,
+  film: filmShape.isRequired
 };
+
+export default SmallMovieCard;

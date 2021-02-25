@@ -1,20 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Main from "./main";
+import MovieCard from "./movie-card";
+import Catalog from "./catalog";
+import Footer from "./footer";
 import {activeFilmShape} from "../validators/active-film";
 import {filmShape} from "../validators/film";
 
 
-const App = (props) => {
+const Main = (props) => {
   const {activeFilm, films, genres} = props;
-  return <Main activeFilm={activeFilm} genres={genres} films={films}/>;
+  return <React.Fragment>
+    <MovieCard activeFilm={activeFilm}/>
+    <div className="page-content">
+      <Catalog genres={genres} films={films}/>
+      <Footer/>
+    </div>
+  </React.Fragment>;
 };
 
-App.propTypes = {
+Main.propTypes = {
   activeFilm: activeFilmShape.isRequired,
   films: PropTypes.arrayOf(filmShape).isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-export default App;
+export default Main;

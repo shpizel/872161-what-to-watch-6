@@ -1,6 +1,7 @@
 import React from "react";
 
-export const Header = () => {
+
+const Header = () => {
   return <header className="page-header movie-card__head">
     <div className="logo">
       <a className="logo__link">
@@ -17,3 +18,5 @@ export const Header = () => {
     </div>
   </header>;
 };
+
+export default Header;
