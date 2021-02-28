@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import MovieCard from "./movie-card";
-import Catalog from "./catalog";
-import Footer from "./footer";
-import {activeFilmShape} from "../validators/active-film";
-import {filmShape} from "../validators/film";
+import MovieCard from "../movie-card";
+import Catalog from "../catalog";
+import Footer from "../footer";
+import {activeFilmShape} from "../../validators/active-film";
+import {filmShape} from "../../validators/film";
 
 
 const Main = (props) => {
