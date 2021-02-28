@@ -8,12 +8,14 @@ import {filmShape} from "../validators/film";
 
 const MoviesList = (props) => {
   const {films, noShowMoreButton} = props;
-  return <React.Fragment>
-    <div className="catalog__movies-list">
-      {films.map((film, i) => <SmallMovieCard key={i + 1} film={film} />)}
-    </div>
-    {(!noShowMoreButton) ? <ShowMoreButton/> : null}
-  </React.Fragment>;
+  return (
+    <React.Fragment>
+      <div className="catalog__movies-list">
+        {films.map((film, i) => <SmallMovieCard key={i + 1} film={film} />)}
+      </div>
+      {(!noShowMoreButton) ? <ShowMoreButton/> : null}
+    </React.Fragment>
+  );
 };
 
 MoviesList.propTypes = {

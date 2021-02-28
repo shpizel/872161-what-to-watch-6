@@ -6,9 +6,11 @@ import GenresListItem from "./genres-list-item";
 
 const GenresList = (props) => {
   const {genres} = props;
-  return <ul className="catalog__genres-list">
-    {genres.map((genre, i) => <GenresListItem key={i + 1} genre={genre} isActive={!i}/>)}
-  </ul>;
+  return (
+    <ul className="catalog__genres-list">
+      {genres.map((genre, i) => <GenresListItem key={i + 1} genre={genre} isActive={!i}/>)}
+    </ul>
+  );
 };
 
 GenresList.propTypes = {

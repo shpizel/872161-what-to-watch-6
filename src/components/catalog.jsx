@@ -9,13 +9,11 @@ import {filmShape} from "../validators/film";
 const Catalog = (props) => {
   const {genres = [], films, noShowMoreButton = false, modifier = ``, title = `Catalog`, hideTitle = true} = props;
   return (
-    <React.Fragment>
-      <section className={`catalog ${modifier}`}>
-        <h2 className={`catalog__title ${(hideTitle) ? ` visually-hidden` : ``}`}>{title}</h2>
-        {(genres.length > 0) ? <GenresList genres={genres}/> : ``}
-        <MoviesList films={films} noShowMoreButton={noShowMoreButton}/>
-      </section>
-    </React.Fragment>
+    <section className={`catalog ${modifier}`}>
+      <h2 className={`catalog__title ${(hideTitle) ? ` visually-hidden` : ``}`}>{title}</h2>
+      {(genres.length > 0) ? <GenresList genres={genres}/> : ``}
+      <MoviesList films={films} noShowMoreButton={noShowMoreButton}/>
+    </section>
   );
 };
 
