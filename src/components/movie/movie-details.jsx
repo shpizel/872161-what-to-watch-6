@@ -1,11 +1,9 @@
 import React from "react";
 
-import {activeFilmShape} from "../validators/active-film";
+import {activeFilmShape} from "../../validators/active-film";
 
 
-const MovieDetails = (props) => {
-  const {activeFilm} = props;
-
+const MovieDetails = ({activeFilm}) => {
   return (
     <React.Fragment>
       <div className="movie-card__text movie-card__row">

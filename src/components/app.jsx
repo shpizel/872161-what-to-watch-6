@@ -12,38 +12,39 @@ import {activeFilmShape} from "../validators/active-film";
 import {filmShape} from "../validators/film";
 
 
-const App = (props) => {
-  const {activeFilm, films, genres} = props;
+const App = ({activeFilm, films, genres}) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact>
+        <Route exact path="/">
           <Main activeFilm={activeFilm} genres={genres} films={films}/>
         </Route>
-        <Route path="/login" exact component={SignIn}/>
-        <Route path="/mylist" exact>
+        <Route exact path="/login" component={SignIn}/>
+        <Route exact path="/mylist">
           <MyList films={films}/>
         </Route>
-        <Route path="/films/:id?" exact>
-          <Movie activeFilm={activeFilm} films={films.slice(4)}/>
-        </Route>
-        <Route path="/films/:id/review" exact>
-          <AddReview activeFilm={activeFilm}/>
-        </Route>
-        <Route path="/player/:id" exact>
-          <Player activeFilm={activeFilm}/>
-        </Route>
-        <Route
-          render={() => (
-            <Fragment>
-              <h1>
-                404.
-                <br />
-                <small>Page not found</small>
-              </h1>
-              <Link to="/">Go to main page</Link>
-            </Fragment>
-          )}
+        <Route exact path="/films/:id" render={({match: {params: {id: filmId}}}) => (
+          <Movie filmId={parseInt(filmId, 10)} activeFilm={activeFilm} films={films}/>
+        )}
+        />
+        <Route exact path="/films/:id/review" render={({match: {params: {id: filmId}}}) => (
+          <AddReview filmId={parseInt(filmId, 10)} activeFilm={activeFilm}/>
+        )}
+        />
+        <Route exact path="/player/:id" render={({match: {params: {id: filmId}}}) => (
+          <Player filmId={parseInt(filmId, 10)} activeFilm={activeFilm}/>
+        )}
+        />
+        <Route render={() => (
+          <Fragment>
+            <h1>
+              404.
+              <br />
+              <small>Page not found</small>
+            </h1>
+            <Link to="/">Go to main page</Link>
+          </Fragment>
+        )}
         />
       </Switch>
     </BrowserRouter>

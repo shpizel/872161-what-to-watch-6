@@ -1,3 +1,7 @@
+import {getRandomNumber} from "./common";
+import {FILM_ID_MAX, FILM_ID_MIN} from "../consts";
+
+
 export const getFilmDuration = (duration, delimiter = `:`, zeroPadding = 2, labelsEnabled = false) => {
   const hours = duration / 3600;
   const minutes = duration % 3600 / 60;
@@ -28,3 +32,5 @@ export const humanizeRating = (rating) => {
   }
   return `Awesome`;
 };
+
+export const getRandomFilmId = () => getRandomNumber(FILM_ID_MIN, FILM_ID_MAX);

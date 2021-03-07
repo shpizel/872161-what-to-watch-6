@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import GenresListItem from "./genres-list-item";
 
-
-const GenresList = (props) => {
-  const {genres} = props;
-  return (
+const GenresList = ({genres}) => {
+  return !!genres && (
     <ul className="catalog__genres-list">
-      {genres.map((genre, i) => <GenresListItem key={i + 1} genre={genre} isActive={!i}/>)}
+      {genres.map((genre, i) => (
+        <li key={i + 1} className={`catalog__genres-item ${(!i) ? ` catalog__genres-item--active` : ``}`}>
+          <a href="#" className="catalog__genres-link">{genre}</a>
+        </li>
+      ))}
     </ul>
   );
 };
 
 GenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default GenresList;

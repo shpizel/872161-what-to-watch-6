@@ -1,18 +1,17 @@
 import React from "react";
 
-import Header from "./header";
-import {activeFilmShape} from "../validators/active-film";
+import MovieCardHeader from "./movie-card-header";
+import {activeFilmShape} from "../../validators/active-film";
 
 
-const MovieCard = (props) => {
-  const {activeFilm} = props;
+const MovieCard = ({activeFilm}) => {
   return (
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src={activeFilm.background} alt={name}/>
       </div>
       <h1 className="visually-hidden">WTW</h1>
-      <Header/>
+      <MovieCardHeader/>
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">

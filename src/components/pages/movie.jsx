@@ -2,19 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Footer from "../footer";
-import Catalog from "../catalog";
-import Header from "../header";
+import MovieCardHeader from "../movie/movie-card-header";
+import MovieDescription from "../movie/movie-description";
+import MovieReviews from "../movie/movie-reviews";
+import MovieNavigation from "../movie/movie-navigation";
+import MoreLikeThis from "../more-like-this";
 import {activeFilmShape} from "../../validators/active-film";
-import MovieDescription from "../movie-description";
 import {filmShape} from "../../validators/film";
-import MovieRating from "../movie-reviews";
-import MovieNavigation from "../movie-navigation";
-import {movieTabs} from "../../validators/movie-tabs";
+import {MovieTab} from "../../consts";
+import MovieRating from "../movie/movie-rating";
 
 
-const Movie = (props) => {
-  const {activeFilm, films, activeTab} = props;
-
+const Movie = ({filmId, activeFilm, films, activeTab}) => {
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -23,7 +22,7 @@ const Movie = (props) => {
             <img src={activeFilm.background} alt={activeFilm.name}/>
           </div>
           <h1 className="visually-hidden">WTW</h1>
-          <Header/>
+          <MovieCardHeader/>
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{activeFilm.name}</h2>
@@ -45,7 +44,7 @@ const Movie = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <a href={`/films/${filmId}/review`} className="btn movie-card__button">Add review</a>
               </div>
             </div>
           </div>
@@ -59,6 +58,7 @@ const Movie = (props) => {
             <div className="movie-card__desc">
               <MovieNavigation activeTab={activeTab}/>
               <MovieRating activeFilm={activeFilm}/>
+              <MovieReviews activeFilm={activeFilm}/>
               <MovieDescription activeFilm={activeFilm}/>
             </div>
           </div>
@@ -66,7 +66,7 @@ const Movie = (props) => {
       </section>
 
       <div className="page-content">
-        <Catalog hideTitle={false} title={`More like this`} noShowMoreButton={true} films={films.slice(3)}/>
+        <MoreLikeThis films={films}/>
         <Footer/>
       </div>
     </React.Fragment>
@@ -74,9 +74,10 @@ const Movie = (props) => {
 };
 
 Movie.propTypes = {
+  filmId: PropTypes.number.isRequired,
   activeFilm: activeFilmShape.isRequired,
   films: PropTypes.arrayOf(filmShape).isRequired,
-  activeTab: PropTypes.oneOf(movieTabs),
+  activeTab: PropTypes.oneOf(Object.values(MovieTab)),
 };
 
 export default Movie;

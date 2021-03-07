@@ -1,11 +1,9 @@
 import React from "react";
 
-import {activeFilmShape} from "../validators/active-film";
+import {activeFilmShape} from "../../validators/active-film";
 
 
-const MovieDescription = (props) => {
-  const {activeFilm} = props;
-
+const MovieDescription = ({activeFilm}) => {
   return (
     <div className="movie-card__text">
       {activeFilm.description.map((text, i) => <p key={i + 1}>{text}</p>)}
