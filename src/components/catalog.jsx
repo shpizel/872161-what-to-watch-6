@@ -2,22 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import GenresList from "./genres-list";
-import MoviesList from "./movies-list";
+import MoviesList from "./movie/movies-list";
 import {filmShape} from "../validators/film";
 
 
-const Catalog = (props) => {
-  const {genres, films} = props;
-  return <section className="catalog">
-    <h2 className="catalog__title visually-hidden">Catalog</h2>
-    <GenresList genres={genres}/>
-    <MoviesList films={films}/>
-  </section>;
+const Catalog = ({genres, films, noShowMoreButton = true}) => {
+  return (
+    <section className="catalog">
+      <h2 className="catalog__title visually-hidden">Catalog</h2>
+      <GenresList genres={genres}/>
+      <MoviesList films={films} noShowMoreButton={noShowMoreButton}/>
+    </section>
+  );
 };
 
 Catalog.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  films: PropTypes.arrayOf(filmShape).isRequired
+  genres: PropTypes.arrayOf(PropTypes.string),
+  films: PropTypes.arrayOf(filmShape).isRequired,
+  noShowMoreButton: PropTypes.bool,
 };
 
 export default Catalog;
